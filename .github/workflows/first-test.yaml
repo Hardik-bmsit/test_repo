@@ -1,1 +1,22 @@
+name: Check Commits
+
+on:
+  push:
+    branches:
+      - main
+      - develop
+
+jobs:
+  check-commits:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Check commit messages
+        run: |
+          commits=$(git log --oneline --no-merges)
+          echo "Commits:"
+          echo "$commits"
 
